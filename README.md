@@ -76,6 +76,3 @@ This document lists all reserved keywords in **Sycthe**, a minimal, JIT-friendly
 
 ---
 
-## ✅ Total Keywords: 24
-
-ClarkLang is designed to be minimal, expressive, and predictable — with explicit async control, no hidden exceptions, and clean modular boundaries.
