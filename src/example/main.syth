@@ -1,0 +1,28 @@
+access (IO, Logger, User);
+
+expose main;
+
+funct main() {
+    log ^= Logger;
+    u1  ^= User.NewUser("Clark", "clark@example.com", log);
+    u2  ^= User.NewUser("Alice", "alice@example.com", log);
+
+    IO.Write(u1.Read());
+    u1.Write("Hello, world!");
+
+    IO.Write("Serialized: " + u1.Serialize());
+
+    if u1.Compare(u2) {
+        IO.Write("Users are equal");
+    } else {
+        IO.Write("Users are different");
+    };
+
+    log ^= Logger;
+    u   ^= User.NewUser("Clark", "clark@example.com", log);
+
+    IO.Write(u.Read());
+    u.Write("Hello, Sycthe!");
+
+    IO.Write(#"Serialized user: {u.Serialize()}");
+};
