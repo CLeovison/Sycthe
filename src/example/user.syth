@@ -1,0 +1,60 @@
+access (IO, Logger, Time);
+
+expose User;
+expose NewUser;
+
+struct User {
+    name: string;
+    email: string;
+    createdAt: string;
+};
+
+
+contract Reader {
+    Read() string;
+};
+
+contract Writer {
+    Write(data: string);
+};
+
+contract Serializable {
+    Serialize() string;
+};
+
+contract Comparable {
+    Compare(other: User) bool;
+};
+
+
+funct UserRead(u: User) & string {
+    return "reading user: " + u.name;
+};
+
+funct UserWrite(u: User, log: Logger, data: string) {
+    log.Info("writing for user " + u.name);
+    IO.Write(data);
+};
+
+funct UserSerialize(u: User) & string {
+    return "{ name: \"" + u.name + "\", email: \"" + u.email + "\" }";
+};
+
+funct UserCompare(u: User, other: User) & bool {
+    return u.email == other.email;
+};
+
+
+funct NewUser(name: string, email: string, log: Logger) & User {
+    u ^= User(name = name, email = email, createdAt = Time.Now());
+
+    expose u.Read      = UserRead(u);
+    expose u.Write     = UserWrite(u, log);
+    expose u.Serialize = UserSerialize(u);
+    expose u.Compare   = UserCompare(u);
+
+    return u;
+};
+
+
+
