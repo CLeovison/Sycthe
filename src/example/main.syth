@@ -2,7 +2,7 @@ access (IO, Logger, User);
 
 expose main;
 
-funct main() {
+func main() {
     log ^= Logger;
     u1  ^= User.NewUser("Clark", "clark@example.com", log);
     u2  ^= User.NewUser("Alice", "alice@example.com", log);

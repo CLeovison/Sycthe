@@ -27,8 +27,8 @@ This document lists all reserved keywords in **Sycthe**, a minimal, JIT-friendly
 
 | Keyword       | Description |
 |---------------|-------------|
-| `funct`       | Declares a regular function. Cannot use `await`. |
-| `async funct` | Declares an asynchronous function. Only `async funct` can use `await`. |
+| `func`       | Declares a regular function. Cannot use `await`. |
+| `async func` | Declares an asynchronous function. Only `async func` can use `await`. |
 | `return`      | Returns values from a function. |
 | `main`        | Declares the program entry point. |
 
