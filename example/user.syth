@@ -57,4 +57,6 @@ funct NewUser(name: string, email: string, log: Logger) & User {
 };
 
 
+emit(NewUser());
+
 
