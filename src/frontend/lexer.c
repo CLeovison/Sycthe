@@ -4,6 +4,7 @@ const char *token_type_to_string(TokenType type)
 {
     switch (type)
     {
+        // Keywords
     case TOKEN_FUNCT:
         return "funct";
     case TOKEN_IF:
@@ -26,5 +27,19 @@ const char *token_type_to_string(TokenType type)
         return "default";
     case TOKEN_RETURN:
         return "return";
+    case TOKEN_STRUCT:
+        return "struct";
+    case TOKEN_UNION:
+        return "union";
+    case TOKEN_CONTRACT:
+        return "contract";
+    case TOKEN_TRUE:
+        return "true";
+    case TOKEN_FALSE:
+        return "false";
+
+    // Identifiers
+    case TOKEN_IDENTIFIERS:
+        return "IDENTIFIERS";
     }
 }

@@ -21,7 +21,6 @@ typedef enum
     TOKEN_STRUCT,
     TOKEN_UNION,
     TOKEN_CONTRACT,
-    TOKEN_EMIT,
     TOKEN_TRUE,
     TOKEN_FALSE,
 
@@ -59,10 +58,8 @@ typedef enum
 
 } TokenType;
 
-struct Lexeme
+typedef struct
 {
     TokenType token;
-    char *lexeme;
-    int line;
-};
+} Token;
 #endif
