@@ -1,9 +1,11 @@
-#ifndef lexer.h
-#define lexer .h
+#ifndef lexer_h
+#define lexer_h
 
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+
+// Token Type of the Language
 typedef enum
 {
     /// Keyword
@@ -11,8 +13,7 @@ typedef enum
     TOKEN_IF,
     TOKEN_ELSE,
     TOKEN_FOR,
-    TOKEN_WHILE,
-    TOKEN_DO,
+    TOKEN_RANGE,
     TOKEN_SWITCH,
     TOKEN_CASE,
     TOKEN_BREAK,
@@ -23,6 +24,7 @@ typedef enum
     TOKEN_CONTRACT,
     TOKEN_TRUE,
     TOKEN_FALSE,
+    TOKEN_DEFER,
 
     /// Literals
     /// Definition : a literal is a textual representation (notation) of a value as it is written in source code.
@@ -55,11 +57,29 @@ typedef enum
 
     TOKEN_ERROR,
     TOKEN_EOF
-
 } TokenType;
 
+// Scanner: Explanation
 typedef struct
 {
-    TokenType token;
+    const char *start;
+    const char *current;
+    int line;
+} Scanner;
+
+Scanner scanner;
+
+//Token: In Depth Explanation
+typedef struct
+{
+    TokenType type;
+    const char* start;
+    int length;
+    int line;
 } Token;
+
+void initScanner(const char *source);
+
+Token scanToken();
+
 #endif

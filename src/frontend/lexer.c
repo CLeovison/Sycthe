@@ -1,45 +1,123 @@
 #include "lexer.h"
 
-const char *token_type_to_string(TokenType type)
+void initScanner(const char *source)
 {
-    switch (type)
-    {
-        // Keywords
-    case TOKEN_FUNCT:
-        return "funct";
-    case TOKEN_IF:
-        return "if";
-    case TOKEN_ELSE:
-        return "else";
-    case TOKEN_FOR:
-        return "for";
-    case TOKEN_WHILE:
-        return "while";
-    case TOKEN_DO:
-        return "do";
-    case TOKEN_SWITCH:
-        return "switch";
-    case TOKEN_CASE:
-        return "case";
-    case TOKEN_BREAK:
-        return "break";
-    case TOKEN_DEFAULT:
-        return "default";
-    case TOKEN_RETURN:
-        return "return";
-    case TOKEN_STRUCT:
-        return "struct";
-    case TOKEN_UNION:
-        return "union";
-    case TOKEN_CONTRACT:
-        return "contract";
-    case TOKEN_TRUE:
-        return "true";
-    case TOKEN_FALSE:
-        return "false";
+    scanner.start = source;
+    scanner.current = source;
+    scanner.line = 1;
+}
 
-    // Identifiers
-    case TOKEN_IDENTIFIERS:
-        return "IDENTIFIERS";
+Token scanToken()
+{
+    skipWhitespace();
+    scanner.start = scanner.current;
+
+    if (isAtEnd())
+        return makeToken(TOKEN_EOF);
+
+    char c = advance();
+
+    switch (c)
+    {
+    case '(':
+        return makeToken(TOKEN_LEFT_PAREN);
+    case ')':
+        return makeToken(TOKEN_RIGHT_PAREN);
+    case '{':
+        return makeToken(TOKEN_OPEN_BRACE);
+    case '}':
+        return makeToken(TOKEN_CLOSE_BRACE);
+    case ';':
+        return makeToken(TOKEN_SEMICOLON);
+    case ',':
+        return makeToken(TOKEN_COMMA);
+    case '.':
+        return makeToken(TOKEN_DOT);
+    case '-':
+        return makeToken(TOKEN_MINUS);
+    case '+':
+        return makeToken(TOKEN_PLUS);
+    case '/':
+        return makeToken(TOKEN_SLASH);
+    case '*':
+        return makeToken(TOKEN_STAR);
+    case '!':
+        return makeToken(
+            match('=') ? TOKEN_BANG_EQUAL : TOKEN_BANG);
+    case '=':
+        return makeToken(
+            match('=') ? TOKEN_EQUAL_EQUAL : TOKEN_EQUAL);
+    case '<':
+        return makeToken(
+            match('=') ? TOKEN_LESS_EQUAL : TOKEN_LESS);
+    case '>':
+        return makeToken(
+            match('=') ? TOKEN_GREATER_EQUAL : TOKEN_GREATER);
+    }
+
+    return errorToken("Unexpected character.");
+}
+
+static bool isAtEnd()
+{
+    return *scanner.current == '\0';
+}
+
+static char advance()
+{
+    scanner.current++;
+    return scanner.current[-1];
+}
+
+static char peek()
+{
+    return *scanner.current;
+}
+
+static bool match(char expected)
+{
+    if (isAtEnd())
+        return false;
+    if (*scanner.current != expected)
+        return false;
+    scanner.current++;
+    return true;
+}
+
+static Token makeToken(TokenType type)
+{
+    Token token;
+    token.type = type;
+    token.start = scanner.start;
+    token.length = (int)(scanner.current - scanner.start);
+    token.line = scanner.line;
+    return token;
+}
+
+static Token errorToken(const char *message)
+{
+    Token token;
+    token.type = TOKEN_ERROR;
+    token.start = message;
+    token.line = (int)strlen(message);
+    token.line = scanner.line;
+    return token;
+}
+
+static void skipWhiteSpace()
+{
+    for (;;)
+    {
+        char c = peek();
+        switch (c)
+        {
+        case ' ':
+        case '\r':
+        case '\t':
+            advance();
+            break;
+        default:
+            return;
+        }
     }
 }
