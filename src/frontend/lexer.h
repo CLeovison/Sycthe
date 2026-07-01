@@ -44,16 +44,20 @@ typedef enum
     TOKEN_STAR,
     TOKEN_SLASH,
     TOKEN_SEMICOLON,
-
-    // One or Two Character Token
+    TOKEN_AMP,
+    TOKEN_BIT_OR,
     TOKEN_BANG,
-    TOKEN_BANG_EQUAL,
     TOKEN_EQUAL,
-    TOKEN_EQUAL_EQUAL,
     TOKEN_GREATER,
-    TOKEN_GREATER_EQUAL,
     TOKEN_LESS,
+
+    // Two Character Token
+    TOKEN_BANG_EQUAL,
+    TOKEN_EQUAL_EQUAL,
+    TOKEN_GREATER_EQUAL,
     TOKEN_LESS_EQUAL,
+    TOKEN_AND,
+    TOKEN_OR,
 
     TOKEN_ERROR,
     TOKEN_EOF
@@ -69,11 +73,11 @@ typedef struct
 
 Scanner scanner;
 
-//Token: In Depth Explanation
+// Token: In Depth Explanation
 typedef struct
 {
     TokenType type;
-    const char* start;
+    const char *start;
     int length;
     int line;
 } Token;

@@ -1,17 +1,12 @@
 #include "lexer.h"
 
-void initScanner(const char *source)
-{
-    scanner.start = source;
-    scanner.current = source;
-    scanner.line = 1;
-}
-
 Token scanToken()
 {
     skipWhitespace();
+    //Scanner.start represents a point to the current character where the lexeme scan starts
     scanner.start = scanner.current;
 
+    //Check if the end of the source code has been reached, if it was reach EOF Token will be returned and stop
     if (isAtEnd())
         return makeToken(TOKEN_EOF);
 
@@ -58,6 +53,15 @@ Token scanToken()
     return errorToken("Unexpected character.");
 }
 
+void initScanner(const char *source)
+{
+    scanner.start = source;
+    scanner.current = source;
+    scanner.line = 1;
+}
+
+// '\0' represents a Null Terminator
+// If the current character is the null byte, then we've reached the end.
 static bool isAtEnd()
 {
     return *scanner.current == '\0';
@@ -84,6 +88,8 @@ static bool match(char expected)
     return true;
 }
 
+
+//This line of code represents the creation of token. The scanner's start and current pointers capture the token's lexeme. 
 static Token makeToken(TokenType type)
 {
     Token token;
@@ -94,6 +100,8 @@ static Token makeToken(TokenType type)
     return token;
 }
 
+// This line of code represents an returning error tokens.
+// This helper function is pointing the error message string instead of pointing to the user's source code.
 static Token errorToken(const char *message)
 {
     Token token;
