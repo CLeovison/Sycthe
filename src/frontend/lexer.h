@@ -9,7 +9,7 @@
 typedef enum
 {
     /// Keyword
-    TOKEN_FUNCT,
+    TOKEN_PROC,
     TOKEN_IF,
     TOKEN_ELSE,
     TOKEN_FOR,
@@ -24,7 +24,8 @@ typedef enum
     TOKEN_CONTRACT,
     TOKEN_TRUE,
     TOKEN_FALSE,
-    TOKEN_DEFER,
+    TOKEN_LATER,
+    TOKEN_RANGE,
 
     /// Literals
     /// Definition : a literal is a textual representation (notation) of a value as it is written in source code.
