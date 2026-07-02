@@ -25,7 +25,6 @@ typedef enum
     TOKEN_TRUE,
     TOKEN_FALSE,
     TOKEN_LATER,
-    TOKEN_RANGE,
 
     /// Literals
     /// Definition : a literal is a textual representation (notation) of a value as it is written in source code.
