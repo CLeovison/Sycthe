@@ -1,0 +1,34 @@
+access (IO, Logger)
+
+expose User
+
+//So the idea is that in order to have a multiple return value
+// The developer must wrap all of it's function that is needed inside of union and declare that like c
+// to enforce the user to have return type
+
+
+//Tagged Union
+union ReturnValue{
+    Value int
+    Error err
+}
+
+ReturnValue ExampleFunction(){
+
+    ReturnValue value
+    for value range values{
+
+    }
+
+     when value{
+         Success: "You've success",
+         Failure: "You've failed"
+    }
+
+    return value
+}
+
+
+func Utility(){
+
+}
