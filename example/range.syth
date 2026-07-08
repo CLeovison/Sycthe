@@ -1,6 +1,6 @@
 access (IO, Logger)
 
-expose User
+scope User
 
 //So the idea is that in order to have a multiple return value
 // The developer must wrap all of it's function that is needed inside of union and declare that like c
