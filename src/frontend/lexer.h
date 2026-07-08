@@ -8,6 +8,10 @@
 // Token Type of the Language
 typedef enum
 {
+    //Modules
+
+    TOKEN_ACCESS,
+    TOKEN_SCOPE,
     /// Keyword
     TOKEN_PROC,
     TOKEN_IF,
