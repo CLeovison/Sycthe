@@ -63,8 +63,11 @@ typedef enum
     TOKEN_EQUAL_EQUAL,
     TOKEN_GREATER_EQUAL,
     TOKEN_LESS_EQUAL,
+    
+    //Logical Operator
     TOKEN_AND,
     TOKEN_OR,
+    TOKEN_NOT,
 
     TOKEN_ERROR,
     TOKEN_EOF
