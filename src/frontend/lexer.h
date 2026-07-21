@@ -26,11 +26,15 @@ typedef enum
     TOKEN_STRUCT,
     TOKEN_UNION,
     TOKEN_CONTRACT,
+    TOKEN_ENUM,
+    //Boolean
     TOKEN_TRUE,
     TOKEN_FALSE,
+
+    //Refers to Defer in Some Language
     TOKEN_LATER,
     TOKEN_WHEN,
-    TOKEN_ENUM,
+    
 
 
     /// Literals
@@ -88,7 +92,7 @@ typedef struct
 {
     TokenType type;
     const char *start;
-    int length;
+    size_t length;
     int line;
 } Token;
 
