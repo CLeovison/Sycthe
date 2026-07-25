@@ -1,4 +1,5 @@
 #include "lexer.h"
+#include "token.h"
 #include <string.h>
 
 /*
@@ -166,7 +167,6 @@ Token scanToken()
         return makeToken(match('=') ? TOKEN_GREATER_EQUAL : TOKEN_GREATER);
     case '<':
         return makeToken(match('=') ? TOKEN_LESS_EQUAL : TOKEN_LESS);
-   
     }
 
     return errorToken("Unexpected character.");
