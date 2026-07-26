@@ -5,3 +5,7 @@
 ## https://jasongorman.uk/writing/memory-lifetimes/
 
 ## https://www.dgtlgrove.com/p/untangling-lifetimes-the-arena-allocator
+
+## https://github.com/ccgargantua/arena-allocator
+
+## https://github.com/tsoding/arena

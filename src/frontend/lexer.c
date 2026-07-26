@@ -19,7 +19,8 @@ void initScanner(const char *source)
     This is used when scanning identifiers, since identifiers typically
     start with a letter or underscore.
 */
-static bool isAlpha(char c){
+static bool isAlpha(char c)
+{
     return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '_';
 }
 
@@ -28,11 +29,12 @@ static bool isAlpha(char c){
     Instead of writing a switch case for every digit,
     we can perform a simple range check here.
 */
-static bool isDigit(char c){
+static bool isDigit(char c)
+{
     return c >= '0' && c <= '9';
 }
 
-/* '\0' represents a Null Terminator
+/* ' \0 ' represents a Null Terminator
     If the current character is the null byte, then we've reached the end.
 */
 static bool isAtEnd()
@@ -43,7 +45,7 @@ static bool isAtEnd()
 /*  So this line of code represents reading a next character from the source code,
     then checks if it matches any of the one-character lexems or TokenType, To read
     the new character, we will use a helper that will consume the current character and returns it
-*/ 
+*/
 static char advance()
 {
     scanner.current++;
@@ -52,9 +54,9 @@ static char advance()
 
 /*
     Looks at the current character without moving the scanner forward.
-    
-    Think of it as "peeking" ahead so we know what's coming. For example, 
-    we can check if the next character is whitespace before deciding 
+
+    Think of it as "peeking" ahead so we know what's coming. For example,
+    we can check if the next character is whitespace before deciding
     whether to skip it or let the token scanner handle it.
 */
 static char peek()
@@ -62,6 +64,9 @@ static char peek()
     return *scanner.current;
 }
 
+/*
+    If the current character is the desired one, we advance and return true. Otherwise, we return false to indicate it wasn’t matched.
+*/
 static bool match(char expected)
 {
     if (isAtEnd())
@@ -72,8 +77,9 @@ static bool match(char expected)
     return true;
 }
 
-
-//This line of code represents the creation of token. The scanner's start and current pointers capture the token's lexeme. 
+/*
+ This line of code represents the creation of token. The scanner's start and current pointers capture the token's lexeme.
+*/
 static Token makeToken(TokenType type)
 {
     Token token;
@@ -99,6 +105,93 @@ static Token errorToken(const char *message)
     return token;
 }
 
+/*
+    This is like peek() but for one character past the current one. If the current character and the next one are both /,
+    we consume them and then any other characters until the next newline or the end of the source code.
+
+    We use peek() to check for the newline but not consume it. That way, the newline will be the current character on the
+    next turn of the outer loop in skipWhitespace() and we’ll recognize it and increment scanner.line.
+*/
+static char peekNext()
+{
+    if (isAtEnd())
+    {
+        return 0;
+    }
+    return scanner.current[1];
+}
+
+/*
+    Consumes `steps` characters at once. A wrapper around advance()
+    so stepping over a known delimiter (like a comment opener) reads
+    as one clear action instead of repeated advance() calls.
+
+    Goes through advance() rather than bumping the pointer directly,
+    so any future bookkeeping (line/column tracking) still happens.
+
+    Only call this after peeking — the next `steps` characters must
+    exist, or we'd walk past the '\0' terminator.
+*/
+
+static void skip(int steps)
+{
+    for (int i = 0; i < steps; i++)
+    {
+        advance();
+    }
+}
+
+/* Line comment: consume up to (not including) the newline,
+   so skipWhiteSpace can count the line. */
+static void skipLineComment()
+{
+    while (peek() != '\n' && !isAtEnd())
+    {
+        advance();
+    }
+}
+
+/*
+    Skips a block comment, from the opening "/ *" to its matching
+    "* /" (spaced so this comment doesn't end itself).
+
+    A counter tracks nesting: "/ *" increments, "* /" decrements,
+    done when it hits zero. Newlines still bump scanner.line.
+    If the comment is unterminated, we stop at EOF.
+*/
+static void skipBlockComment()
+{
+    skip(2);
+    int nesting = 1;
+
+    while (nesting > 0)
+    {
+        if (isAtEnd())
+        {
+            return;
+        }
+
+        if (peek() == '/' && peekNext() == '*')
+        {
+            skip(2);
+            nesting++;
+        }
+        else if (peek() == '*' && peekNext() == '/')
+        {
+            skip(2);
+            nesting--;
+        }
+        else
+        {
+            if (peek() == '\n')
+            {
+                scanner.line++;
+            }
+            advance();
+        }
+    }
+}
+
 static void skipWhiteSpace()
 {
     for (;;)
@@ -115,6 +208,20 @@ static void skipWhiteSpace()
             scanner.line++;
             advance();
             break;
+        case '/':
+            if (peekNext() == '/')
+            {
+                skipLineComment();
+            }
+            else if (peekNext == '*')
+            {
+                skipBlockComment();
+            }
+            else
+            {
+                return;
+            }
+            break;
         default:
             return;
         }
@@ -124,10 +231,10 @@ static void skipWhiteSpace()
 Token scanToken()
 {
     skipWhiteSpace();
-    //Scanner.start represents a point to the current character where the lexeme scan starts
+    // Scanner.start represents a point to the current character where the lexeme scan starts
     scanner.start = scanner.current;
 
-    //Check if the end of the source code has been reached, if it was reach EOF Token will be returned and stop
+    // Check if the end of the source code has been reached, if it was reach EOF Token will be returned and stop
     if (isAtEnd())
         return makeToken(TOKEN_EOF);
 
@@ -157,8 +264,8 @@ Token scanToken()
         return makeToken(TOKEN_SLASH);
     case ';':
         return makeToken(TOKEN_SEMICOLON);
-    case '&' :
-        return match('&') ?makeToken(TOKEN_AND) : makeToken(TOKEN_AMP);
+    case '&':
+        return match('&') ? makeToken(TOKEN_AND) : makeToken(TOKEN_AMP);
     case '!':
         return makeToken(match('=') ? TOKEN_BANG_EQUAL : TOKEN_BANG);
     case '=':
@@ -171,4 +278,3 @@ Token scanToken()
 
     return errorToken("Unexpected character.");
 }
-

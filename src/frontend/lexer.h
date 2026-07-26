@@ -7,17 +7,19 @@
 #include "token.h"
 // Token Type of the Language
 
-// Scanner: Explanation
+/*Scanner: */
 typedef struct
 {
-    const char *start;
+    const char *start; //Shit
     const char *current;
     int line;
 } Scanner;
 
 Scanner scanner;
 
-// Token: In Depth Explanation
+/*
+    Token: In Depth Explanation
+*/ 
 typedef struct
 {
     TokenType type;
