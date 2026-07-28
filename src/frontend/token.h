@@ -41,8 +41,8 @@ typedef enum
     // Single Character Token
     TOKEN_LEFT_PAREN,
     TOKEN_RIGHT_PAREN,
-    TOKEN_OPEN_BRACE,
-    TOKEN_CLOSE_BRACE,
+    TOKEN_RIGHT_BRACE,
+    TOKEN_LEFT_BRACE,
     TOKEN_COMMA,
     TOKEN_DOT,
     TOKEN_PLUS,
