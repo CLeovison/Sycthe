@@ -7,6 +7,7 @@ typedef enum
 
     TOKEN_ACCESS,
     TOKEN_SCOPE,
+    
     /// Keyword
     TOKEN_PROC,
     TOKEN_IF,
