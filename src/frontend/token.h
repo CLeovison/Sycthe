@@ -27,6 +27,7 @@ typedef enum
     TOKEN_FLOAT,
     TOKEN_INT,
     TOKEN_BOOL,
+    TOKEN_DECIMAL,
     //Boolean
     TOKEN_TRUE,
     TOKEN_FALSE,
