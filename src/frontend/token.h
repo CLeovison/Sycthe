@@ -23,6 +23,10 @@ typedef enum
     TOKEN_UNION,
     TOKEN_CONTRACT,
     TOKEN_ENUM,
+    TOKEN_STRING,
+    TOKEN_FLOAT,
+    TOKEN_INT,
+    TOKEN_BOOL,
     //Boolean
     TOKEN_TRUE,
     TOKEN_FALSE,
@@ -36,7 +40,7 @@ typedef enum
     /// Literals
     /// Definition : a literal is a textual representation (notation) of a value as it is written in source code.
     TOKEN_IDENTIFIERS,
-    TOKEN_STRING,
+
     TOKEN_NUMBER,
 
     // Single Character Token
