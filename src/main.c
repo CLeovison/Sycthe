@@ -17,5 +17,5 @@ static char *readFile(const char *path)
 
 int main(int argc, const char *argv[])
 {
-    return 0;
+
 }

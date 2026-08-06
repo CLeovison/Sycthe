@@ -1,60 +1,26 @@
 #include "lexer.h"
 
-
 /**/
-void init_lexer(){
-
-}
-/**/
-
-
-static void advance(){
-
-}
-/**/
-static void peek(){
-
-}
-/**/
-static Token newToken(){
-
+void init_lexer()
+{
 }
 
-/**/
-static Token errorToken(){
-
+void scan_keyword_identifier()
+{
 }
 
-/**/
-static void isAtEnd(){
-
-}
-/**/
-static void isDigit(){
-
-}
-/**/
-static void isAlpha(){
-
-}
-/**/
-static void skipLineComment(){
-
-}
-/**/
-static void skipMultiComment(){
-
-}
-/**/
-static void skipWhiteSpace(){
-
-}
-/**/
-static void scan_keyword_identifier(){
-
+Scanner isString()
+{
 }
 
-/**/
-Token scanToken(){
+void isDigit()
+{
+}
 
+void isAlpha()
+{
+}
+
+void skipWhitespace()
+{
 }
