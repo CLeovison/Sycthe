@@ -3,20 +3,20 @@ String interpolation
 UTF-8 Support
 
 ## Keywords
-contracts
-struct
-enum
-union
-proc/func (Undecided)
-if
-else
-switch
-case
-break
-default
-later (Same as defer)
-while
-do
+- contracts
+- struct
+- enum
+- union
+- proc/func (Undecided)
+- if
+- else
+- switch
+- case
+- break
+- default
+- later (Same as defer)
+- while
+- do
 
 ## Logical Operators
 << LESSTHAN
