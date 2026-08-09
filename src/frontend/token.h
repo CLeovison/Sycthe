@@ -23,11 +23,14 @@ typedef enum
     TOKEN_UNION,
     TOKEN_CONTRACT,
     TOKEN_ENUM,
+    
+    //Data Type
     TOKEN_STRING,
     TOKEN_FLOAT,
     TOKEN_INT,
     TOKEN_BOOL,
     TOKEN_DECIMAL,
+
     //Boolean
     TOKEN_TRUE,
     TOKEN_FALSE,

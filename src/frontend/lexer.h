@@ -4,11 +4,13 @@
 #include "token.h"
 #include <stdio.h>
 
-typedef struct{
-    const char start;
-    const char current;
+typedef struct
+{
+    const char *start;
+    const char *current;
     int line;
 } Scanner;
 
+Scanner scanner;
 
 #endif
