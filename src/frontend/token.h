@@ -30,7 +30,9 @@ typedef enum
     TOKEN_LATER,
     TOKEN_WHEN,
     
-
+    //String Interpolation
+    TOKEN_INTERP_START,
+    TOKEN_INTERP_END
 
     /// Literals
     /// Definition : a literal is a textual representation (notation) of a value as it is written in source code.
