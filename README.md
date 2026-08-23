@@ -1,6 +1,6 @@
 ## Things to be added :
 - String interpolation
-- UTF-8 Support
+- UTF-8 Support (Unicode Encoding) (Find a Better Resources to understand how it works and how to properly implement it)
 
 ## Keywords
 - contracts (Interface)
@@ -30,6 +30,10 @@
 && LOGICAL AND
 || LOGICAL OR
 
-comma
+## Punctuation
+Comma
+Semi Colon
+
+## Boolean Types
 true
 false

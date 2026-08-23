@@ -1,48 +1,45 @@
 #include "lexer.h"
 
-/**/
 void init_lexer()
+{
+}
+
+void peek()
+{
+}
+
+void peek_next()
 {
 }
 
 void advance()
 {
-}
 
-static char peek()
-{
-    return *scanner.current;
-}
-void scan_keyword_identifier()
-{
-}
-
-Scanner isString()
-{
-}
-
-void isDigit()
-{
-}
-
-void isAlpha()
-{
 }
 
 void skipWhitespace()
 {
-    char c = peek();
+}
 
-    while (1)
-    {
-        switch (c)
-        {
-        case ' ':
-        case '\r':
-        case '\t':
-            break;
-        default:
-            return;
-        }
-    }
+static void isKeywordIdentifier()
+{
+}
+
+/*This check if it combines alphabet and number*/
+static void isAlphaNum()
+{
+}
+
+/*
+This check if the token is digit / number
+*/
+static void isDigit()
+{
+}
+
+/*
+This check if the token is alphabet
+*/
+static void isAlpha()
+{
 }

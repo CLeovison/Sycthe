@@ -4,13 +4,12 @@
 #include "token.h"
 #include <stdio.h>
 
-typedef struct
+typedef struct Lexer
 {
-    const char *start;
-    const char *current;
-    int line;
-} Scanner;
-
-Scanner scanner;
+    TokenType type;
+    char *start;
+    const char position;
+    
+} Lexer;
 
 #endif
