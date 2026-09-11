@@ -4,7 +4,7 @@
 - -Signals (Reactivity Like of Javascript) (Find a better resource to understand this but this is one of the main feature that is somehow needed for frontend language)
 
 ## Keywords
-- contracts (Interface)
+- contract (Interface)
 - struct
 - enum
 - union
