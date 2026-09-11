@@ -19,17 +19,24 @@
 - while
 - do
 
+## Data Types
+- int
+- float
+- decimal
+- string
+- char
+
 ## Module
 - scope (Package Declaration)
 - acccess (Dependency Declaration)
 
 ## Logical Operators
-<< LESSTHAN
->> GREATERTHAN
-!= 
-== EQUAL
-&& LOGICAL AND
-|| LOGICAL OR
+- << LESSTHAN
+- >> GREATERTHAN
+- != 
+- == EQUAL
+- && LOGICAL AND
+- || LOGICAL OR
 
 ## Punctuation
 Comma
