@@ -45,3 +45,8 @@ Semi Colon
 ## Boolean Types
 true
 false
+
+
+## Exploration in the future
+Register based vm
+concurrency model
