@@ -8,8 +8,10 @@ typedef struct Lexer
 {
     TokenType type;
     char *start;
-    const char position;
-    
+    char position;
+
 } Lexer;
+
+Lexer lexer;
 
 #endif

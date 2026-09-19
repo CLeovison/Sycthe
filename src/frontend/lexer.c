@@ -1,20 +1,29 @@
 #include "lexer.h"
-
+#include <stdbool.h>
 void init_lexer()
 {
+    lexer.start = 1;
+    lexer.position = 1;
 }
 
-void peek()
+// Returns the current character without consuming it
+char peek()
 {
 }
 
-void peek_next()
+/*
+ Returns the character after the current one without advancing the lexer
+*/
+char peek_next()
 {
 }
 
 void advance()
 {
+}
 
+static bool match(char expected)
+{
 }
 
 void skipWhitespace()
