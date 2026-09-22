@@ -50,3 +50,6 @@ false
 ## Exploration in the future
 Register based vm
 concurrency model
+
+
+## So The Core folder is the one that consists of the Library/Data that is will be needed on building sycthe
