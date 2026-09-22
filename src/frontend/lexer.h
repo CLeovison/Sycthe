@@ -1,35 +1,17 @@
 #ifndef lexer_h
 #define lexer_h
 
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
 #include "token.h"
-// Token Type of the Language
+#include <stdio.h>
 
-/*Scanner: */
-typedef struct
-{
-    const char *start; //Shit
-    const char *current;
-    int line;
-} Scanner;
-
-Scanner scanner;
-
-/*
-    Token: In Depth Explanation
-*/ 
-typedef struct
+typedef struct Lexer
 {
     TokenType type;
-    const char *start;
-    size_t length;
-    int line;
-} Token;
+    char *start;
+    char position;
 
-void initScanner(const char *source);
+} Lexer;
 
-Token scanToken();
+Lexer lexer;
 
 #endif

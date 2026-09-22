@@ -1,0 +1,10 @@
+//For returning multiple type, you can use union
+
+union ParseResult {
+    Value int
+    Error ParseError
+}
+
+proc parseInt(input string) ParseResult {
+    ...
+}
