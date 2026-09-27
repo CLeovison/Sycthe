@@ -1,8 +1,8 @@
 //For returning multiple type, you can use union
 
 union ParseResult {
-    Value int
-    Error ParseError
+    Value 
+    Error 
 }
 
 proc parseInt(input string) ParseResult {
