@@ -9,7 +9,7 @@ typedef struct Lexer
     TokenType type;
     char *start;
     char position;
-
+    size_t length;
 } Lexer;
 
 Lexer lexer;

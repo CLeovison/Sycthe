@@ -2,7 +2,6 @@
 #include <stdbool.h>
 void init_lexer()
 {
-    lexer.start = 1;
     lexer.position = 1;
 }
 

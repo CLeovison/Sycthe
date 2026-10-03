@@ -5,9 +5,8 @@
 typedef struct
 {
     void *data;
-    size_t item_size;
+    size_t count;
     size_t capacity;
-    size_t length;
 } DynamicArray;
 
 void array_init();

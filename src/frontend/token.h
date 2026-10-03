@@ -7,7 +7,7 @@ typedef enum
 
     TOKEN_ACCESS,
     TOKEN_SCOPE,
-    
+
     /// Keyword
     TOKEN_PROC,
     TOKEN_IF,
@@ -23,7 +23,7 @@ typedef enum
     TOKEN_UNION,
     TOKEN_CONTRACT,
     TOKEN_ENUM,
-    
+
     //Data Type
     TOKEN_STRING,
     TOKEN_FLOAT,
@@ -38,10 +38,10 @@ typedef enum
     //Refers to Defer in Some Language
     TOKEN_LATER,
     TOKEN_WHEN,
-    
+
     //String Interpolation
     TOKEN_INTERP_START,
-    TOKEN_INTERP_END
+    TOKEN_INTERP_END,
 
     /// Literals
     /// Definition : a literal is a textual representation (notation) of a value as it is written in source code.
@@ -73,7 +73,7 @@ typedef enum
     TOKEN_EQUAL_EQUAL,
     TOKEN_GREATER_EQUAL,
     TOKEN_LESS_EQUAL,
-    
+
     //Logical Operator
     TOKEN_AND,
     TOKEN_OR,
