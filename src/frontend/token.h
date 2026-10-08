@@ -23,6 +23,8 @@ typedef enum
     TOKEN_UNION,
     TOKEN_CONTRACT,
     TOKEN_ENUM,
+    TOKEN_CONST,
+
 
     //Data Type
     TOKEN_STRING,
@@ -41,6 +43,7 @@ typedef enum
 
     //String Interpolation
     TOKEN_INTERP_START,
+    TOKEN_STRING_CHUNK,
     TOKEN_INTERP_END,
 
     /// Literals
