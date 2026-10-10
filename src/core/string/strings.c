@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-
 void string_init(String *s)
 {
     if (s == NULL)
@@ -88,7 +87,6 @@ String string_trim(const char *src)
         start++;
     }
 
-    // pull end back past trailing whitespace
     while (end > start && isspace((unsigned char)src[end - 1]))
     {
         end--;

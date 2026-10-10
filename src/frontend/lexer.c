@@ -1,53 +1,44 @@
 #include "lexer.h"
 #include <stdbool.h>
-void init_lexer()
+#include <string.h>
+
+
+void init_scanner(const char *src)
 {
-    lexer.position = 1;
+    scanner.start = src;
+    scanner.position = src;
+    scanner.line = 1;
+}
+Lexer scanLexer()
+{
+    scanner.start = scanner.position;
+    if (isAtEnd())
+    {
+        return makeToken(TOKEN_EOF);
+    }
+
+    return errorToken("Unexpected Character");
 }
 
-// Returns the current character without consuming it
-char peek()
+static Lexer makeToken(TokenType type)
 {
+    Lexer lexer;
+
+    lexer.type = type;
+    lexer.start = scanner.start;
+    lexer.line = scanner.line;
+    lexer.length = (size_t)(scanner.position - scanner.start);
+
+    return lexer;
 }
 
-/*
- Returns the character after the current one without advancing the lexer
-*/
-char peek_next()
+static Lexer errorToken(const char *message)
 {
-}
+    Lexer lexer;
+    lexer.type = TOKEN_ERROR;
+    lexer.start = message;
+    lexer.length = (size_t)strlen(message);
+    lexer.line = scanner.line;
 
-void advance()
-{
-}
-
-static bool match(char expected)
-{
-}
-
-void skipWhitespace()
-{
-}
-
-static void isKeywordIdentifier()
-{
-}
-
-/*This check if it combines alphabet and number*/
-static void isAlphaNum()
-{
-}
-
-/*
-This check if the token is digit / number
-*/
-static void isDigit()
-{
-}
-
-/*
-This check if the token is alphabet
-*/
-static void isAlpha()
-{
+    return lexer;
 }
