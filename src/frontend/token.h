@@ -32,6 +32,7 @@ typedef enum
     TOKEN_INT,
     TOKEN_BOOL,
     TOKEN_DECIMAL,
+    TOKEN_DOUBLE,
 
     //Boolean
     TOKEN_TRUE,
@@ -70,6 +71,9 @@ typedef enum
     TOKEN_EQUAL,
     TOKEN_GREATER,
     TOKEN_LESS,
+    TOKEN_COLON,
+    TOKEN_RBRACKET,
+    TOKEN_LBRACKET,
 
     // Two Character Token
     TOKEN_BANG_EQUAL,

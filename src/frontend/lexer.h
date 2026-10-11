@@ -63,6 +63,7 @@ extern Scanner scanner;
 extern Lexer lexer;
 
 void init_lexer(const char *src);
+char advance(Lexer *lexer);
 Lexer scanLexer();
 
 #endif
