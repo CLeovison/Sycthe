@@ -1,6 +1,8 @@
 #include "lexer.h"
 #include <stdbool.h>
 #include <string.h>
+#include <stdint.h>
+
 
 void init_scanner(const char *src)
 {
@@ -77,4 +79,9 @@ Lexer scanLexer()
         return makeToken(TOKEN_LBRACKET);
     }
     return errorToken("Unexpected Character");
+}
+ 
+static int64_t scanUTF8(){
+    
+    
 }
