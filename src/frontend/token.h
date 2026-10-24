@@ -3,7 +3,7 @@
 
 typedef enum
 {
-    //Modules
+    // Modules
 
     TOKEN_ACCESS,
     TOKEN_SCOPE,
@@ -25,8 +25,7 @@ typedef enum
     TOKEN_ENUM,
     TOKEN_CONST,
 
-
-    //Data Type
+    // Data Type
     TOKEN_STRING,
     TOKEN_FLOAT,
     TOKEN_INT,
@@ -34,15 +33,15 @@ typedef enum
     TOKEN_DECIMAL,
     TOKEN_DOUBLE,
 
-    //Boolean
+    // Boolean
     TOKEN_TRUE,
     TOKEN_FALSE,
 
-    //Refers to Defer in Some Language
+    // Refers to Defer in Some Language
     TOKEN_LATER,
     TOKEN_WHEN,
 
-    //String Interpolation
+    // String Interpolation
     TOKEN_INTERP_START,
     TOKEN_STRING_CHUNK,
     TOKEN_INTERP_END,
@@ -64,10 +63,11 @@ typedef enum
     TOKEN_MINUS,
     TOKEN_STAR,
     TOKEN_SLASH,
+    TOKEN_MODULO,
     TOKEN_SEMICOLON,
     TOKEN_AMP,
     TOKEN_BIT_OR,
-    TOKEN_BANG,
+
     TOKEN_EQUAL,
     TOKEN_GREATER,
     TOKEN_LESS,
@@ -75,16 +75,21 @@ typedef enum
     TOKEN_RBRACKET,
     TOKEN_LBRACKET,
 
-    // Two Character Token
+    // Comparison OPERATOR (Two Character Token)
     TOKEN_BANG_EQUAL,
     TOKEN_EQUAL_EQUAL,
     TOKEN_GREATER_EQUAL,
     TOKEN_LESS_EQUAL,
+    TOKEN_MODULO_EQUAL,
+    TOKEN_SLASH_EQUAL,
+    TOKEN_STAR_EQUAL,
+    TOKEN_MINUS_EQUAL,
+    TOKEN_PLUS_EQUAL,
 
-    //Logical Operator
+    // Logical Operator
     TOKEN_AND,
     TOKEN_OR,
-    TOKEN_NOT,
+    TOKEN_BANG,
 
     TOKEN_ERROR,
     TOKEN_EOF

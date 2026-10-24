@@ -1,8 +1,8 @@
 #include "lexer.h"
 #include <stdbool.h>
 #include <string.h>
+#include <stdbool.h>
 #include <stdint.h>
-
 
 void init_scanner(const char *src)
 {
@@ -10,6 +10,7 @@ void init_scanner(const char *src)
     scanner.position = src;
     scanner.line = 1;
 }
+
 static bool isAtEnd()
 {
     return *scanner.position == '\0';
@@ -30,6 +31,23 @@ static char advance()
 {
     scanner.position++;
     return scanner.position[-1];
+}
+
+static bool match(char *unexpected)
+{
+    if (isAtEnd())
+    {
+        return false;
+    }
+
+    if (scanner.position != unexpected)
+    {
+        return false;
+    }
+
+    scanner.position++;
+
+    return true;
 }
 
 // static gives makeToken internal linkage, so it is visible only inside this source file and cannot be called from other .c files.
@@ -56,6 +74,10 @@ static Lexer errorToken(const char *message)
 
     return lexer;
 }
+static void skipCommentWhiteSpace()
+{
+  
+}
 
 Lexer scanLexer()
 {
@@ -77,11 +99,33 @@ Lexer scanLexer()
         return makeToken(TOKEN_RBRACKET);
     case '}':
         return makeToken(TOKEN_LBRACKET);
+    case ';':
+        return makeToken(TOKEN_SEMICOLON);
+    case ':':
+        return makeToken(TOKEN_COLON);
+    case '<':
+        return makeToken(
+            match('=') ? TOKEN_LESS_EQUAL : TOKEN_LESS);
+    case '>':
+        return makeToken(match('=') ? TOKEN_GREATER_EQUAL : TOKEN_GREATER);
+    case '!':
+        return makeToken(match('=') ? TOKEN_BANG_EQUAL : TOKEN_BANG);
+    case '=':
+        return makeToken(match('=') ? TOKEN_EQUAL_EQUAL : TOKEN_EQUAL);
+    case '%':
+        return makeToken(match('=') ? TOKEN_MODULO_EQUAL : TOKEN_MODULO);
+    case '/':
+        return makeToken(match('=') ? TOKEN_SLASH_EQUAL : TOKEN_SLASH);
+    case '*':
+        return makeToken(match('=') ? TOKEN_STAR_EQUAL : TOKEN_STAR);
+    case '-':
+        return makeToken(match('=') ? TOKEN_MINUS_EQUAL : TOKEN_MINUS);
+    case '+':
+        return makeToken(match('=') ? TOKEN_PLUS_EQUAL : TOKEN_PLUS);
     }
     return errorToken("Unexpected Character");
 }
- 
-static int64_t scanUTF8(){
-    
-    
+
+static int64_t scan_utf8()
+{
 }

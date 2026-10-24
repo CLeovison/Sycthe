@@ -2,6 +2,8 @@
 - String interpolation
 - UTF-8 Support (Unicode Encoding) (Find a Better Resources to understand how it works and how to properly implement it)
 - -Signals (Reactivity Like of Javascript) (Find a better resource to understand this but this is one of the main feature that is somehow needed for frontend language)
+- behavior oriented concurrency
+- Support for multiline comment
 
 ## Keywords
 - contract (Interface)
@@ -53,3 +55,4 @@ concurrency model
 
 
 ## So The Core folder is the one that consists of the Library/Data that is will be needed on building sycthe
+
