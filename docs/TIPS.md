@@ -12,6 +12,10 @@ For lexer research, try searches such as:
 - `compiler lexer peek and next functions`
 - `C lexer track source position`
 - `lexer tokenize multiline comments`
+- `C lexer token length pointer subtraction start current`
+- `Crafting Interpreters scanner start current token length`
+- `lexer token store source pointer and length or copy lexeme`
+- `C lexer token span source offsets`
 
 For parser research, try:
 
@@ -19,16 +23,26 @@ For parser research, try:
 - `parser operator precedence compiler`
 - `parser error recovery techniques`
 
+When deciding whether the lexer needs to store a token's length, research how
+lexers represent token spans. If the lexer keeps pointers to the token's start
+and end, the byte length can often be calculated from those pointers; storing
+it separately may still be useful if later stages need the span after those
+pointers are no longer available.
+
 For UTF-8 and hexadecimal-number research, try:
 
 - `UTF-8 encoding Unicode code points bytes`
 - `C validate UTF-8 input`
+- `UTF-8 byte length versus character count`
+- `C pointer difference UTF-8 string byte length code points`
 - `compiler hexadecimal integer literal syntax`
 - `C lexer parse hexadecimal literals`
 
 UTF-8 support and hexadecimal literals are areas of interest for Sycthe; these
 queries are starting points for research, not a finalized design or implemented
-language feature.
+language feature. In particular, pointer differences in UTF-8 text count bytes,
+not Unicode code points; choose deliberately which kind of length the lexer
+and token representation need.
 
 These searches are for learning about design and implementation approaches;
 they are not instructions to search the repository. Treat external examples as
