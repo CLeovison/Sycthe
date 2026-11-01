@@ -1,23 +1,38 @@
 # Development tips
 
-## Searching the codebase
+## Researching lexer and parser concepts
 
-Use specific, direct keywords instead of broad searches. For example, when
-investigating lexer behavior, search for terms such as:
+When researching online (for example, with Google), use specific search
+phrases that combine the compiler component with the concept you want to learn
+about. Add terms such as `compiler`, `C`, or the name of a language when that
+helps narrow the results.
 
-- `lexer`
-- `peek`
-- `advance`
-- `skip`
-- `position`
-- `start`
-- `token`
-- `type`
+For lexer research, try searches such as:
 
-Combine related terms when you know what you are looking for, such as `lexer
-position` or `token type`. Search results depend on which parts of the
-frontend have been implemented; some relevant files may currently be empty or
-only contain declarations.
+- `compiler lexer peek and next functions`
+- `C lexer track source position`
+- `lexer tokenize multiline comments`
+
+For parser research, try:
+
+- `recursive descent parser expressions in C`
+- `parser operator precedence compiler`
+- `parser error recovery techniques`
+
+For UTF-8 and hexadecimal-number research, try:
+
+- `UTF-8 encoding Unicode code points bytes`
+- `C validate UTF-8 input`
+- `compiler hexadecimal integer literal syntax`
+- `C lexer parse hexadecimal literals`
+
+UTF-8 support and hexadecimal literals are areas of interest for Sycthe; these
+queries are starting points for research, not a finalized design or implemented
+language feature.
+
+These searches are for learning about design and implementation approaches;
+they are not instructions to search the repository. Treat external examples as
+references, and adapt ideas to Sycthe's evolving design.
 
 ## Useful starting points
 
@@ -33,3 +48,16 @@ only contain declarations.
 Treat declarations and filenames as signposts, not proof that the corresponding
 behavior is implemented. Check the source and examples before relying on a
 feature.
+
+## Investigating the build
+
+When figuring out how to build the project, explore both build approaches:
+
+- [`nob.h`](https://github.com/tsoding/nob.h) is a header-only C library for
+  writing build recipes in C.
+- [GNU Make](https://www.gnu.org/software/make/manual/) is the reference manual
+  for Makefiles. The repository currently has an empty `src/Makefile`.
+
+No `nob.h` build file is present yet. If build instructions are added, document
+the required compiler, commands, and expected output here or in the project
+README.
