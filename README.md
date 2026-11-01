@@ -1,60 +1,90 @@
-## Things to be added :
-- String interpolation
-- UTF-8 Support (Unicode Encoding) (Find a Better Resources to understand how it works and how to properly implement it)
-- -Signals (Reactivity Like of Javascript) (Find a better resource to understand this but this is one of the main feature that is somehow needed for frontend language)
-- behavior oriented concurrency
-- Support for multiline comment
+# Sycthe
 
-## File Extension Name
-.syth
+Sycthe is an experimental programming-language project. The repository contains
+early C code for language and runtime components alongside notes about the
+language's intended syntax and future direction. It is not yet a complete,
+usable compiler or interpreter.
 
-## Keywords
-- contract (Interface)
-- struct
-- enum
-- union
-- proc
-- if
-- else
-- switch
-- case
-- break
-- default
-- later (Same as defer)
-- while
-- do
+> **Project status:** The frontend is unfinished. The token definitions in
+> `src/frontend/token.h` describe planned language constructs, but do not by
+> themselves mean those constructs can currently be compiled or run. The files
+> in `example/` are syntax sketches, not verified programs.
 
-## Data Types
-- int
-- float
-- decimal
-- string
-- char
+## Language design
 
-## Module
-- scope (Package Declaration)
-- acccess (Dependency Declaration)
+The source-file extension is `.syth`. The syntax and feature set are still
+evolving; the lists below summarize the current design notes and token
+definitions rather than a stable language specification.
 
-## Logical Operators
-- << LESSTHAN
-- >> GREATERTHAN
-- != 
-- == EQUAL
-- && LOGICAL AND
-- || LOGICAL OR
+### Declared keywords
 
-## Punctuation
-Comma
-Semi Colon
+The token definitions currently include:
 
-## Boolean Types
-true
-false
+`proc`, `if`, `else`, `for`, `range`, `switch`, `case`, `break`, `default`,
+`return`, `struct`, `union`, `contract`, `enum`, `const`, `later`, and `when`.
 
+The module-related tokens are `scope` and `access`. Their intended roles are
+package and dependency declarations, respectively.
 
-## Exploration in the future
-Register based vm
-concurrency model
+### Declared types and values
 
+The token definitions include the type names `string`, `float`, `int`, `bool`,
+`decimal`, and `double`, as well as the boolean values `true` and `false`.
 
-## So The Core folder is the one that consists of the Library/Data that is will be needed on building sycthe
+### Declared operators and punctuation
+
+The token definitions include arithmetic operators (`+`, `-`, `*`, `/`, `%`),
+assignment (`=`), equality and comparison operators (`==`, `!=`, `<`, `<=`,
+`>`, `>=`), logical operators (`&&`, `||`, `!`), and compound assignments
+(`+=`, `-=`, `*=`, `/=`, `%=`). Commas, semicolons, parentheses, braces,
+brackets, colons, and dots are also represented.
+
+These are token declarations, not a promise that every operator or construct
+has working parsing or runtime behavior.
+
+### Syntax sketch
+
+The examples show the intended procedure syntax:
+
+```syth
+proc main(x int, y int) {
+    return x + y;
+}
+```
+
+This is illustrative only; the current frontend does not yet provide a
+complete way to compile or run it.
+
+## Project layout
+
+| Path | Purpose |
+| --- | --- |
+| `src/frontend/` | Lexer, parser, semantic-analysis, and token source files |
+| `src/ast/` | Abstract syntax tree source files |
+| `src/core/` | Foundational C utilities, including arrays, strings, arenas, and UTF-8 |
+| `src/runtime/` | Runtime and memory-management source files |
+| `example/` | Illustrative `.syth` syntax sketches |
+| `docs/` | Working notes and design resources |
+
+`src/main.c` is currently a small C string-utility demonstration, not a Sycthe
+language runner.
+
+## Development roadmap
+
+The following items are planned or under exploration:
+
+- String interpolation. Token placeholders are present, but interpolation is
+  not implemented end to end.
+- UTF-8 support throughout the language and runtime.
+- Signals/reactivity, with a focus on frontend application development.
+- Behavior-oriented concurrency and a defined concurrency model.
+- Multiline comments.
+- Exploring a register-based virtual machine.
+
+## Documentation
+
+- [Library notes](docs/Libraries.md)
+- [Memory-management references](docs/MemoryManagement.md)
+- [Development tips](docs/TIPS.md)
+
+These documents are working notes and may be incomplete.
