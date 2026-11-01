@@ -5,6 +5,9 @@
 - behavior oriented concurrency
 - Support for multiline comment
 
+## File Extension Name
+.syth
+
 ## Keywords
 - contract (Interface)
 - struct
@@ -55,4 +58,3 @@ concurrency model
 
 
 ## So The Core folder is the one that consists of the Library/Data that is will be needed on building sycthe
-

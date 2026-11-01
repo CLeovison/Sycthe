@@ -29,11 +29,12 @@ void string_init(String *s);
 /* Make a String from a C string. Copies, doesn't borrow. */
 String string_create(const char *src);
 
+/* s1 + s2 glued together into a new string. */
+String string_append(const char *s1, const char *s2);
+
 /* Copy of src with whitespace stripped from both ends. */
 String string_trim(const char *src);
 
-/* s1 + s2 glued together into a new string. */
-String string_append(const char *s1, const char *s2);
 
 bool string_match();
 size_t string_length(String *s);

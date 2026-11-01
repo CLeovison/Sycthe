@@ -10,7 +10,7 @@ void string_init(String *s)
         return;
     }
     s->data = NULL;
-    s->length;
+    s->length = 0;
 }
 
 String string_create(const char *src)
@@ -72,7 +72,6 @@ String string_trim(const char *src)
 {
     String s;
     string_init(&s);
-
     if (src == NULL)
     {
         return s;
