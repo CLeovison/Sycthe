@@ -24,6 +24,7 @@ typedef enum
     TOKEN_CONTRACT,
     TOKEN_ENUM,
     TOKEN_CONST,
+    TOKEN_CONTINUE,
 
     // Data Type
     TOKEN_STRING,
