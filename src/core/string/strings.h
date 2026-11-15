@@ -2,7 +2,7 @@
 #define strings_h
 
 #include <stdbool.h>
-#include "datatype.h"
+#include "../datatype.h"
 
 
 typedef struct

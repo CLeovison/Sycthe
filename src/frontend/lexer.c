@@ -1,22 +1,12 @@
+#include "../core/datatype.h"
 #include "lexer.h"
-#include <stdbool.h>
 
-static void lexer_init(Lexer *lexer)
-{
-    lexer->start = lexer->sourceStart;
-    lexer->position = lexer->sourceStart;
-    lexer->length = 0;
-    lexer->currentRow = 1;
-    lexer->semiColon = NULL;
+void scannerInit(const u8 *src){
+    Scanner scanner;
+
+    scanner.start = src;
+    scanner.position = src;
+    scanner.line = 1;
+    scanner.endline = false;
 }
 
-static bool isAtEnd(Lexer *lexer)
-{
-    return *lexer->position == '\0';
-}
-
-static char advance(Lexer *lexer)
-{
-    lexer->position++;
-    return lexer->position[-1];
-}

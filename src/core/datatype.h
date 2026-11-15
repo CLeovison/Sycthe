@@ -1,4 +1,4 @@
-#ifdef DATATYPE_H
+#ifndef DATATYPE_H
 #define DATATYPE_H
 
 #include <stdint.h>
